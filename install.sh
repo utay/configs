@@ -43,7 +43,7 @@ if [ -x "/usr/bin/git" ]; then
     if [ -d "$HOME/.vim" ]; then
         mv "$HOME/.vim" "$HOME/.vim.bak"
     fi
-    cp "$HOME/$CONFIGSDIR/vim" "$HOME/.vim"
+    cp -r "$HOME/$CONFIGSDIR/vim" "$HOME/.vim"
 else
     echo "Please install git" 1>&2
     exit -1
