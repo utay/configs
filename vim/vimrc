@@ -1,1 +1,153 @@
-/home/neo/.vimrc
+" =======================================
+" Plugins Configurations
+" =======================================
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Disable checker for LateX
+let g:syntastic_tex_checkers= []
+" Don't lag with vim-go
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
+
+let g:go_fmt_command = "goimports"
+
+" Always show the status line
+set laststatus=2
+
+" Automatically displays all buffers when there's only one tab open
+let g:airline#extensions#tabline#enabled = 1
+
+" =======================================
+" Configurations
+" =======================================
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" always keep 5 lines visible
+set scrolloff=8
+
+" pathogen
+execute pathogen#infect()
+filetype plugin indent on
+
+" colorscheme
+syntax on
+set history=700
+set number
+set background=dark
+set t_Co=256 " 256 Color
+colorscheme gruvbox
+
+" Highlight the current line
+set cursorline
+
+" Use Unix as the standard file type
+set ffs=unix
+set encoding=utf8
+
+" Live reload file when edited from outside
+set autoread
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" Use spaces instead of tabs
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+
+autocmd FileType html,css,javascript,ruby,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
+
+set ai " Auto indent
+set si " Smart indent
+set wrap " Wrap lines
+
+" " Linebreak on 500 characters
+set lbr
+set tw=500
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+" " Show matching brackets when text indicator is over them
+set showmatch
+
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" Turn on the Wild menu
+set wildmenu
+
+" Always show current position
+set ruler
+
+" Height of the command bar
+set cmdheight=2
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+    if exists('b:noDeleteTraillingWS')
+        return
+    endif
+    %s/\s\+$//ge
+endfunc
+autocmd BufWritePre * :call DeleteTrailingWS()
+
+augroup mail_netiquette
+    autocmd!
+    autocmd FileType mail let b:noDeleteTraillingWS=1
+    autocmd FileType mail setlocal cc=72 tw=70 list
+augroup END
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+    set wildignore+=.git\*,.hg\*,.svn\*
+endif
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" =======================================
+" Mapping
+" =======================================
+
+" Indent/Unindent in visual mode
+vmap <Tab> >
+vmap <S-Tab> <
+
+" New line in visual mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
