@@ -59,7 +59,7 @@ cat > $HOME/.vimrc << EOF
 EOF
 
 echo "--> Configure YouCompleteMe"
-python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
+python $HOME/.vim/bundle/youcompleteme/install.py --clang-completer \
     --gocode-completer
 
 echo "--> Done :)"
