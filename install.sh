@@ -35,6 +35,9 @@ fi
 echo "--> Setup Vim configuration"
 
 if [ -x "/usr/bin/git" ]; then
+    if [ -d "$HOME/$CONFIGSDIR" ]; then
+        mv "$HOME/$CONFIGSDIR" "$HOME/configs.bak"
+    fi
     git clone --quiet --recursive 'https://github.com/utay/configs' "$HOME/$CONFIGSDIR"
     cd "$HOME/$CONFIGSDIR"
     if [ -d "$HOME/.vim" ]; then
