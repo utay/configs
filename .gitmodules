@@ -1,3 +1,39 @@
+[submodule "vim/bundle/youcompleteme"]
+	path = vim/bundle/youcompleteme
+	url = https://github.com/valloric/youcompleteme
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "vim/bundle/gruvbox"]
+	path = vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "vim/bundle/emmet-vim"]
+	path = vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
