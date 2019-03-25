@@ -83,6 +83,11 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     # aws cli
     pip3 install awscli --upgrade --user
 
+    # aws-iam-authenticator
+    curl -LO https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+    chmod +x aws-iam-authenticator
+    sudo mv aws-iam-authenticator /usr/local/bin
+
     # TODO: install git aliases, zsh aliases
     # TODO: symlink vimrc, .zshrc, .zprezto, josh theme, .gitconfig
     # TODO: chrome default browser
