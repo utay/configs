@@ -80,6 +80,9 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     sudo mv terraform /usr/local/bin
     rm -f terraform_0.11.13_linux_amd64.zip
 
+    # aws cli
+    pip3 install awscli --upgrade --user
+
     # TODO: install git aliases, zsh aliases
     # TODO: symlink vimrc, .zshrc, .zprezto, josh theme, .gitconfig
     # TODO: chrome default browser
