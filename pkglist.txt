@@ -1,0 +1,15 @@
+curl
+git
+zsh
+vim
+go
+python
+cmake
+gdb
+valgrind
+docker
+yarn
+npm
+feh
+dnsutils
+traceroute

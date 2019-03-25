@@ -1,0 +1,44 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+alias v='vim'
+alias proj='cd ~/Projects'
+alias lock='i3lock-fancy'
+
+# Copy to clipboard
+alias copy='xsel -ib'
+
+# SSH public key
+alias pubkey='cat ~/.ssh/id_rsa.pub'
+
+# Don't ask for confirmation when deleting a file
+unalias rm
+
+# Go
+# Binary path in ~/.profile
+alias gop='cd ~/go'
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# Javascript
+export PATH="$PATH:`yarn global bin`"
+
+# Python
+alias vv='virtualenv -p python3'
+act() {
+    . $1/bin/activate
+}
+alias deact='deactivate'
+export PATH="$PATH:$HOME/.local/bin"
+
+# Rust
+export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# Kubernetes
+# if [ $commands[kubectl] ]; then
+#   source <(kubectl completion zsh)
+# fi
