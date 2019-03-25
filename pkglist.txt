@@ -4,6 +4,7 @@ zsh
 vim
 go
 python
+python-pip
 cmake
 gdb
 valgrind
