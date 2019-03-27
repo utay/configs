@@ -30,8 +30,7 @@ if is_mode_valid "$mode"; then
 fi
 
 if [ ! -x "/usr/bin/git" ]; then
-    echo "--> Please install git" 1>&2
-    exit 1
+    sudo pacman -S git
 fi
 
 if [ -d "$CONFIG_DIR" ]; then
