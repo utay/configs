@@ -9,7 +9,7 @@ is_full_mode() {
 
 is_vim_mode() {
     mode="$1"
-    return is_full_mode "$mode" || [ "$mode" ]
+    return is_full_mode "$mode" || [ "$mode" = "vim" ] || [ "$mode" = "v" ]
 }
 
 is_mode_valid() {
