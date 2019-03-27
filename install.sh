@@ -1,30 +1,51 @@
 #!/bin/bash
 
-check_mode() {
-    if [[ "$1" != "full" && "$1" != "f" && "$1" != "vim" && "$1" != "v" ]]; then
-        return 0
-    else
-        return 1
-    fi
+set -xe
+
+is_full_mode() {
+    mode="$1"
+    return [ "$mode" = "full" ] || [ "$mode" = "f" ]
 }
 
-CONFIGSDIR="configs"
+is_vim_mode() {
+    mode="$1"
+    return is_full_mode "$mode" || [ "$mode" ]
+}
+
+is_mode_valid() {
+    mode="$1"
+    return is_full_mode "$mode" || is_vim_mode "$mode"
+}
+
+CONFIG_DIR="$HOME/configs"
 
 # Ask sudo password
 sudo echo "--> Full Linux config setup or just vim? [full (f),vim (v)]"
 
 read mode
 
-if check_mode "$mode"; then
-    echo "--> Setup cancelled"
-    exit -1
+if is_mode_valid "$mode"; then
+    echo "--> Invalid mode"
+    exit 1
 fi
 
-if [[ "$mode" = "full" || "$mode" = "f" ]]; then
+if [ ! -x "/usr/bin/git" ]; then
+    echo "--> Please install git" 1>&2
+    exit 1
+fi
+
+if [ -d "$CONFIG_DIR" ]; then
+    mv "$CONFIG_DIR" "$HOME/configs.bak"
+fi
+
+git clone --quiet --recursive 'https://github.com/utay/configs' "$CONFIG_DIR"
+cd "$CONFIG_DIR"
+
+if is_full_mode "$mode"; then
     echo "--> Setup Linux configuration"
 
     # Make work directories
-    mkdir ~/go ~/Projects
+    mkdir "$HOME/go" "$HOME/Projects"
 
     # Install pacman packages
     sudo pacman -Syu
@@ -45,6 +66,16 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done'
+    cp prezto/prompt_josh_setup "$HOME/.zprezto/modules/prompt/functions"
+
+    # Backup existing dotfiles and symlink new dotfiles
+    for dotfile in dotfiles/*; do
+        dotfile_path="$HOME/.$(basename "$dotfile")"
+        if [ -f "$dotfile_path" ]; then
+            mv "$dotfile_path" "$dotfile_path.bak"
+        fi
+        ln -sf "$dotfile" "$dotfile_path"
+    done
 
     # Install go deps
     go get -u $(cat godeps.txt)
@@ -52,10 +83,11 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     # Install binaries
 
     # Install i3lock fancy
-    cd ~/Projects
+    cd "$HOME/Projects"
     git clone https://github.com/meskarune/i3lock-fancy.git
     cd i3lock-fancy
     sudo make install
+    cd "$CONFIG_DIR"
 
     # kubectl
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -68,11 +100,12 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
     # stern
-    mkdir -p $GOPATH/src/github.com/wercker
-    cd $GOPATH/src/github.com/wercker
+    mkdir -p "$GOPATH/src/github.com/wercker"
+    cd "$GOPATH/src/github.com/wercker"
     git clone https://github.com/wercker/stern.git && cd stern
     govendor sync
     go install
+    cd "$CONFIG_DIR"
 
     # terraform
     curl -LO https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
@@ -88,27 +121,26 @@ if [[ "$mode" = "full" || "$mode" = "f" ]]; then
     chmod +x aws-iam-authenticator
     sudo mv aws-iam-authenticator /usr/local/bin
 
-    # TODO: install git aliases, zsh aliases
-    # TODO: symlink vimrc, .zshrc, .zprezto, josh theme, .gitconfig
+    # i3 config
+    mkdir "$HOME/.config/i3"
+    ln -sf i3/config "$HOME/.config/i3/config"
+
+    # dunst config
+    mkdir "$HOME/.config/dunst"
+    ln -sf dunst/dunstrc "$HOME/.config/i3/dunstrc"
+
     # TODO: chrome default browser
 fi
 
 echo "--> Setup Vim configuration"
 
-if [ -x "/usr/bin/git" ]; then
-    if [ -d "$HOME/$CONFIGSDIR" ]; then
-        mv "$HOME/$CONFIGSDIR" "$HOME/configs.bak"
-    fi
-    git clone --quiet --recursive 'https://github.com/utay/configs' "$HOME/$CONFIGSDIR"
-    cd "$HOME/$CONFIGSDIR"
-    if [ -d "$HOME/.vim" ]; then
-        mv "$HOME/.vim" "$HOME/.vim.bak"
-    fi
-    cp -r "$HOME/$CONFIGSDIR/vim" "$HOME/.vim"
-else
-    echo "Please install git" 1>&2
-    exit -1
+cd "$CONFIG_DIR"
+
+if [ -d "$HOME/.vim" ]; then
+    mv "$HOME/.vim" "$HOME/.vim.bak"
 fi
+
+cp -r "$CONFIG_DIR/vim" "$HOME/.vim"
 
 if [ -f "$HOME/.vimrc" ]; then
     mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
@@ -119,8 +151,8 @@ cat > $HOME/.vimrc << EOF
 :source $HOME/.vim/vimrc
 EOF
 
-echo "--> Configure YouCompleteMe"
-python $HOME/.vim/bundle/youcompleteme/install.py --clang-completer \
+python $HOME/.vim/bundle/youcompleteme/install.py \
+    --clang-completer \
     --gocode-completer
 
 echo "--> Done :)"
