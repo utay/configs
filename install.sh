@@ -19,7 +19,7 @@ sudo echo "--> Full Linux config setup or just vim? [full (f),vim (v)]"
 
 read mode
 
-if is_mode_valid "$mode"; then
+if ! is_mode_valid "$mode"; then
     echo "--> Invalid mode"
     exit 1
 fi
