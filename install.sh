@@ -4,17 +4,12 @@ set -xe
 
 is_full_mode() {
     mode="$1"
-    return [ "$mode" = "full" ] || [ "$mode" = "f" ]
-}
-
-is_vim_mode() {
-    mode="$1"
-    return is_full_mode "$mode" || [ "$mode" = "vim" ] || [ "$mode" = "v" ]
+    [ "$mode" = "full" ] || [ "$mode" = "f" ]
 }
 
 is_mode_valid() {
     mode="$1"
-    return is_full_mode "$mode" || is_vim_mode "$mode"
+    is_full_mode "$mode" || [ "$mode" = "vim" ] || [ "$mode" = "v" ]
 }
 
 CONFIG_DIR="$HOME/configs"
