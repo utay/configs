@@ -48,14 +48,14 @@ if is_full_mode "$mode"; then
     mkdir "$HOME/go" "$HOME/Projects"
 
     # Install pacman packages
-    sudo pacman -Syu
-    sudo pacman -S $(cat pkglist.txt)
+    sudo pacman -Syu --noconfirm
+    sudo pacman -S --noconfirm $(cat pkglist.txt)
 
     # Add current user to docker group
     sudo usermod -aG docker $USER
 
     # Install yaourt packages
-    yaourt -S $(cat yaourtlist.txt)
+    yaourt -S --noconfirm $(cat yaourtlist.txt)
 
     # Set zsh as default shell
     chsh -s $(grep /zsh$ /etc/shells | tail -1)
