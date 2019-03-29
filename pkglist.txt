@@ -14,3 +14,5 @@ npm
 feh
 dnsutils
 traceroute
+ruby
+ruby-irb
