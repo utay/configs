@@ -106,6 +106,11 @@ if is_full_mode "$mode"; then
     sudo mv linux-386/helm /usr/local/bin
     rm -rf linux-386
 
+    # helmfile
+    curl -LO https://github.com/roboll/helmfile/releases/download/v0.40.1/helmfile_linux_386
+    chmod +x helmfile_linux_386
+    sudo mv helmfile_linux_386 /usr/local/bin/helmfile
+
     # terraform
     curl -LO https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
     unzip terraform_0.11.13_linux_amd64.zip
