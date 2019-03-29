@@ -101,6 +101,11 @@ if is_full_mode "$mode"; then
     go install
     cd "$CONFIG_DIR"
 
+    # helm
+    curl https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-linux-386.tar.gz | tar xz
+    sudo mv linux-386/helm /usr/local/bin
+    rm -rf linux-386
+
     # terraform
     curl -LO https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
     unzip terraform_0.11.13_linux_amd64.zip
