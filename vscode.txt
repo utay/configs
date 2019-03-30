@@ -1,0 +1,5 @@
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+vscodevim.vim
+zhuangtongfa.Material-theme
+mauve.terraform

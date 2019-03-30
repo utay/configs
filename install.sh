@@ -71,6 +71,11 @@ if is_full_mode "$mode"; then
         ln -sf "$dotfile" "$dotfile_path"
     done
 
+    # Install vscode extensions
+    for ext in $(cat vscode.txt); do
+        code --install-extension "$ext"
+    done
+
     # Install go deps
     go get -u $(cat godeps.txt)
 
