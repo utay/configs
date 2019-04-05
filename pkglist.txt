@@ -17,3 +17,5 @@ traceroute
 ruby
 ruby-irb
 code
+linux419-virtualbox-host-modules
+vagrant
