@@ -20,3 +20,5 @@ code
 linux419-virtualbox-host-modules
 vagrant
 alacritty
+unzip
+unclutter

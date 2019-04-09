@@ -39,7 +39,7 @@ if is_full_mode "$mode"; then
     echo "--> Setup Linux configuration"
 
     # Make work directories
-    mkdir "$HOME/go" "$HOME/Projects"
+    mkdir -p "$HOME/go" "$HOME/Projects"
 
     # Install pacman packages
     sudo pacman -Syu --noconfirm
@@ -68,7 +68,7 @@ if is_full_mode "$mode"; then
         if [ -f "$dotfile_path" ]; then
             mv "$dotfile_path" "$dotfile_path.bak"
         fi
-        ln -sf "$dotfile" "$dotfile_path"
+        ln -sf "$CONFIG_DIR/$dotfile" "$dotfile_path"
     done
 
     # Install vscode extensions
@@ -90,13 +90,16 @@ if is_full_mode "$mode"; then
 
     # kubectl
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-    chmod +X kubectl
+    chmod +x kubectl
     sudo mv kubectl /usr/local/bin
 
     # kubectx, kubens
     sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
     sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
     sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+    GOPATH="$HOME/go"
+    PATH="$PATH:$GOPATH/bin"
 
     # stern
     mkdir -p "$GOPATH/src/github.com/wercker"
@@ -131,12 +134,12 @@ if is_full_mode "$mode"; then
     sudo mv aws-iam-authenticator /usr/local/bin
 
     # i3 config
-    mkdir "$HOME/.config/i3"
-    ln -sf i3/config "$HOME/.config/i3/config"
+    mkdir -p "$HOME/.config/i3"
+    ln -sf "$CONFIG_DIR/i3/config" "$HOME/.config/i3/config"
 
     # dunst config
-    mkdir "$HOME/.config/dunst"
-    ln -sf dunst/dunstrc "$HOME/.config/i3/dunstrc"
+    mkdir -p "$HOME/.config/dunst"
+    ln -sf "$CONFIG_DIR/dunst/dunstrc" "$HOME/.config/i3/dunstrc"
 
     # TODO: chrome default browser
 fi
