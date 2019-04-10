@@ -141,6 +141,11 @@ if is_full_mode "$mode"; then
     mkdir -p "$HOME/.config/dunst"
     ln -sf "$CONFIG_DIR/dunst/dunstrc" "$HOME/.config/i3/dunstrc"
 
+    # polybar config
+    mkdir -p "$HOME/.config/polybar"
+    ln -sf "$CONFIG_DIR/polybar/config" "$HOME/.config/polybar/config"
+    ln -sf "$CONFIG_DIR/polybar/launch.sh" "$HOME/.config/polybar/launch.sh"
+
     # TODO: chrome default browser
 fi
 
