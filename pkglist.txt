@@ -22,3 +22,7 @@ vagrant
 alacritty
 unzip
 unclutter
+wireless-tools
+fish
+jq
+open-vm-tools
