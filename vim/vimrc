@@ -53,7 +53,7 @@ colorscheme base16-atelier-dune
 let base16colorspace=256
 
 " Permanent undo
-set undodir=~/configs/vimdid
+set undodir=~/configs/vim/vimdid
 set undofile
 
 " Highlight the current line
