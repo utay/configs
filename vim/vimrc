@@ -37,9 +37,24 @@ filetype plugin indent on
 syntax on
 set history=700
 set number
+
+" deal with colors
+if !has('gui_running')
+  set t_Co=256
+endif
+if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+  " screen does not (yet) support truecolor
+  set termguicolors
+endif
+
+" Colors
 set background=dark
-set t_Co=256 " 256 Color
-colorscheme gruvbox
+colorscheme base16-atelier-dune
+let base16colorspace=256
+
+" Permanent undo
+set undodir=~/configs/vimdid
+set undofile
 
 " Highlight the current line
 set cursorline
