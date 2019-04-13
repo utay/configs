@@ -146,6 +146,10 @@ if is_full_mode "$mode"; then
     ln -sf "$CONFIG_DIR/polybar/config" "$HOME/.config/polybar/config"
     ln -sf "$CONFIG_DIR/polybar/launch.sh" "$HOME/.config/polybar/launch.sh"
 
+    # alacritty config
+    mkdir -p "$HOME/.config/alacritty"
+    ln -sf "$CONFIG_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+
     # TODO: chrome default browser
 fi
 
