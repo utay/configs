@@ -4,9 +4,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # General aliases
-alias v='vim'
+alias v='nvim'
 alias proj='cd ~/Projects'
 alias lock='i3lock-fancy'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 # Copy to clipboard
 alias copy='xsel -ib'
