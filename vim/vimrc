@@ -2,59 +2,31 @@
 " Plugins Configurations
 " =======================================
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Disable checker for LateX
-let g:syntastic_tex_checkers= []
-" Don't lag with vim-go
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
-
-let g:go_fmt_command = "goimports"
-
 " Always show the status line
 set laststatus=2
-
-" Automatically displays all buffers when there's only one tab open
-let g:airline#extensions#tabline#enabled = 1
 
 " =======================================
 " Configurations
 " =======================================
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " always keep 5 lines visible
 set scrolloff=8
 
 " pathogen
-execute pathogen#infect()
+" execute pathogen#infect()
 filetype plugin indent on
 
 " colorscheme
 syntax on
 set history=700
 set number
-
-" deal with colors
-if !has('gui_running')
-  set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
-endif
-
-" Colors
 set background=dark
-colorscheme base16-atelier-dune
-let base16colorspace=256
-
-" Permanent undo
-set undodir=~/configs/vim/vimdid
-set undofile
+set t_Co=256 " 256 Color
+" let g:onedark_termcolors=16
+colorscheme base16-onedark
 
 " Highlight the current line
 set cursorline
@@ -73,8 +45,8 @@ match OverLength /\s\+$/
 " Use spaces instead of tabs
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 autocmd FileType html,css,javascript,ruby,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
 
@@ -104,7 +76,7 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" " Show matching brackets when text indicator is over them
+" Show matching brackets when text indicator is over them
 set showmatch
 
 " How many tenths of a second to blink when matching brackets
@@ -167,3 +139,7 @@ vmap <S-Tab> <
 " New line in visual mode
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
+
+" Permanent undo
+set undodir=~/configs/vim/vimdid
+set undofile
