@@ -5,7 +5,6 @@ abbr -a k kubectl
 abbr -a kx kubectx
 abbr -a ks kubens
 abbr -a ls exa
-abbr -a vlc '/Applications/VLC.app/Contents/MacOS/VLC'
 
 # Fish git prompt
 set -g __fish_git_prompt_show_informative_status
@@ -31,7 +30,7 @@ set -g fish_prompt_pwd_dir_length 1
 set -g fish_color_valid_path --underline
 
 set -e fish_user_paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin $HOME/.rvm/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin /usr/share/rvm/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin
 
 # colored man output
 # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/

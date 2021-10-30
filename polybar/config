@@ -49,10 +49,10 @@ enable-click = false
 enable-scroll = false
 
 label-active = " %name% "
+label-active-foreground = #ffaa00
 label-active-underline = #fba922
 
 label-occupied = " %name% "
-label-occupied-foreground = #ffaa00
 
 label-urgent = " %name% "
 label-urgent-underline = #9b0a20
@@ -78,7 +78,7 @@ label = %percentage_used:2%%
 
 [module/eth]
 type = internal/network
-interface = ens33
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -95,7 +95,7 @@ interval = 5
 date = "%a %d"
 date-alt = %a %b %d
 
-time = %I:%M
+time = %H:%M
 time-alt = %I:%M%p
 
 format-prefix =
@@ -106,7 +106,7 @@ label = %date% %time%
 
 [module/battery]
 type = internal/battery
-battery = BAT1
+battery = BAT0
 adapter = AC
 full-at = 98
 

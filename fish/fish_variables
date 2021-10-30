@@ -12,7 +12,6 @@ SETUVAR _fish_abbr_kx:kubectx
 SETUVAR _fish_abbr_ls:exa
 SETUVAR _fish_abbr_proj:cd\x20\x7e/Projects
 SETUVAR _fish_abbr_v:nvim
-SETUVAR _fish_abbr_vlc:/Applications/VLC\x2eapp/Contents/MacOS/VLC
 SETUVAR fish_color_autosuggestion:555
 SETUVAR fish_color_cancel:normal
 SETUVAR fish_color_command:5fd700
@@ -42,7 +41,7 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/go/bin\x1e/home/utay/\x2elocal/bin\x1e/home/utay/\x2ecargo/bin\x1e/home/utay/\x2ekrew/bin\x1e/home/utay/go/bin\x1e/home/utay/\x2ervm/bin
+SETUVAR fish_user_paths:/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/go/bin\x1e/usr/share/rvm/bin\x1e/home/utay/\x2elocal/bin\x1e/home/utay/\x2ecargo/bin\x1e/home/utay/\x2ekrew/bin\x1e/home/utay/go/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_color_command_duration:pure_color_warning
 SETUVAR pure_color_current_directory:pure_color_primary
