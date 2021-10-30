@@ -31,7 +31,7 @@ set -g fish_prompt_pwd_dir_length 1
 set -g fish_color_valid_path --underline
 
 set -e fish_user_paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin $HOME/.rvm/bin
 
 # colored man output
 # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
@@ -80,5 +80,3 @@ if status is-interactive
 and not set -q TMUX
   exec tmux -u
 end
-
-nvm use 12.18.2
