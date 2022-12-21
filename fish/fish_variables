@@ -1,16 +1,26 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:vim
+SETUVAR --export PYENV_ROOT:/home/utay/\x2epyenv
 SETUVAR __fish_init_2_3_0:\x1d
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_c:cargo
 SETUVAR _fish_abbr_cdf:cd\x20\x7e/frontapp/front
 SETUVAR _fish_abbr_cdi:cd\x20\x7e/frontapp/front\x2dinfra
 SETUVAR _fish_abbr_g:git
+SETUVAR _fish_abbr_gop:cd\x20\x7e/go
+SETUVAR _fish_abbr_gops:cd\x20\x7e/go/src/gitlab\x2ecom/sorare
 SETUVAR _fish_abbr_k:kubectl
 SETUVAR _fish_abbr_ks:kubens
 SETUVAR _fish_abbr_kx:kubectx
 SETUVAR _fish_abbr_ls:exa
+SETUVAR _fish_abbr_pbcopy:xclip\x20\x2dselection\x20clipboard
 SETUVAR _fish_abbr_proj:cd\x20\x7e/Projects
+SETUVAR _fish_abbr_so:cd\x20\x7e/sorare
+SETUVAR _fish_abbr_sob:cd\x20\x7e/sorare/backend
+SETUVAR _fish_abbr_soc:cd\x20\x7e/sorare/infra/development\x3b\x20rvm\x20use\x20\x26\x26\x20bundle\x20exec\x20pry\x20\x26\x26\x20cd\x20\x2d
+SETUVAR _fish_abbr_sof:cd\x20\x7e/sorare/frontend
+SETUVAR _fish_abbr_soi:cd\x20\x7e/sorare/infra
 SETUVAR _fish_abbr_v:nvim
 SETUVAR fish_color_autosuggestion:555
 SETUVAR fish_color_cancel:normal
@@ -41,7 +51,8 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/go/bin\x1e/usr/share/rvm/bin\x1e/home/utay/\x2elocal/bin\x1e/home/utay/\x2ecargo/bin\x1e/home/utay/\x2ekrew/bin\x1e/home/utay/go/bin
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/go/bin\x1e/home/utay/\x2elocal/bin\x1e/home/utay/\x2ecargo/bin\x1e/home/utay/\x2ekrew/bin\x1e/home/utay/go/bin\x1e/home/utay/\x2ervm/bin\x1e/home/utay/\x2epyenv/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_color_command_duration:pure_color_warning
 SETUVAR pure_color_current_directory:pure_color_primary

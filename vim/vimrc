@@ -10,7 +10,7 @@ set laststatus=2
 " =======================================
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\'
 
 " always keep 5 lines visible
 set scrolloff=8

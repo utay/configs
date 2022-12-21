@@ -1,8 +1,34 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "rust",
+    "go",
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  "diagnostic.errorSign": "✘",
   "eslint.autoFixOnSave": false,
+  "prettier.eslintIntegration": true,
   "rust.wait_to_build": 50,
   "rust.clippy_preference": "on",
-  "diagnostic.errorSign": "✘",
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "javascript", "typescript"],
-  "prettier.eslintIntegration": true
+  "rust-analyzer.inlayHints.enable": false,
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }

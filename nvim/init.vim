@@ -6,13 +6,18 @@ call plug#begin('~/.vim/plugged')
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+
+" treesitter doesn't support terraform
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -26,6 +31,15 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Enable syntax highlighting
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  }
+}
+EOF
+
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-pairs',
@@ -37,18 +51,25 @@ let g:coc_global_extensions = [
   \ ]
 " from readme
 
+" coc go auto import
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+" terraform auto format
+autocmd BufWritePre *.tf call terraform#fmt()
+
 nnoremap 1 :call CocAction('jumpDefinition', 'edit')<CR>
+nmap <silent> gi <Plug>(coc-implementation)
 nnoremap <space> :bp<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -57,12 +78,12 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction

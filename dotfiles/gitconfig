@@ -6,3 +6,9 @@
 [user]
     email = yannick.utard@sorare.com
     name = Yannick Utard
+
+[push]
+	default = current
+
+[core]
+	excludesfile = /home/utay/.gitignore
