@@ -10,7 +10,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -40,6 +39,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+let g:ctrlp_custom_ignore = 'node_modules\|target'
+
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-pairs',
@@ -68,6 +69,8 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Confirm completion (and auto import) with enter
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1

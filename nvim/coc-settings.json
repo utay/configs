@@ -12,7 +12,11 @@
   "prettier.eslintIntegration": true,
   "rust.wait_to_build": 50,
   "rust.clippy_preference": "on",
-  "rust-analyzer.inlayHints.enable": false,
+  "suggest.noselect": true,
+  "rust-analyzer.server.path": "/home/utay/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer",
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
   "languageserver": {
     "go": {
       "command": "gopls",
