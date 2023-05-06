@@ -18,6 +18,9 @@ Plug 'stephpy/vim-yaml'
 " treesitter doesn't support terraform
 Plug 'hashivim/vim-terraform'
 
+Plug 'github/copilot.vim'
+Plug 'APZelos/blamer.nvim'
+
 call plug#end()
 
 " Lightline
@@ -51,6 +54,12 @@ let g:coc_global_extensions = [
   \ 'coc-rust-analyzer'
   \ ]
 " from readme
+
+" Copilot
+let g:copilot_enabled = v:false
+
+" Blamer
+let g:blamer_delay = 500
 
 " coc go auto import
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
