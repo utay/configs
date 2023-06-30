@@ -6,6 +6,12 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.tabCompletion": "on",
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["K"],
+        "commands": [{ "command": "editor.action.showHover" }]
+      }
+    ],
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
         "editor.formatOnSave": true
