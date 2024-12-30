@@ -1,39 +1,66 @@
 {
-    "workbench.colorTheme": "One Dark Pro",
-    "editor.minimap.enabled": false,
-    "workbench.editor.showTabs": false,
-    "editor.guides.indentation": false,
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.tabCompletion": "on",
-    "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": ["K"],
-        "commands": [{ "command": "editor.action.showHover" }]
-      }
-    ],
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer",
-        "editor.formatOnSave": true
-    },
-    "rust-analyzer.check.command": "clippy",
-    "rust-analyzer.inlayHints.typeHints.enable": false,
-    "rust-analyzer.inlayHints.parameterHints.enable": false,
-    "rust-analyzer.inlayHints.chainingHints.enable": false,
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[terraform]": {
-        "editor.formatOnSave": true
-    },
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length", "100"],
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        },
-        "editor.formatOnSave": true
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.minimap.enabled": false,
+  "workbench.editor.showTabs": "single",
+  "editor.guides.indentation": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.tabCompletion": "on",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["K"],
+      "commands": [{ "command": "editor.action.showHover" }]
     }
+  ],
+  // https://github.com/VSCodeVim/Vim/issues/4017
+  "vim.handleKeys": {
+    "<C-p>": false
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
+    "rules": {
+      "*.mutable": {
+        "underline": false
+      }
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[terraform]": {
+    "editor.formatOnSave": true
+  },
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "100"],
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[gdscript]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "zig.zls.enabled": "on",
+  "zig.zls.path": "",
 }
