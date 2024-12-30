@@ -1,0 +1,7 @@
+#!/bin/sh
+
+xset r rate 240 40
+setxkbmap -option
+setxkbmap -option caps:escape
+
+$HOME/configs/polybar/launch.sh
