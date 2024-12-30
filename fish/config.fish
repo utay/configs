@@ -5,9 +5,17 @@ abbr -a k kubectl
 abbr -a kx kubectx
 abbr -a ks kubens
 abbr -a ls exa
+abbr -a so 'cd ~/sorare'
+abbr -a gop 'cd ~/go'
+abbr -a gops 'cd ~/go/src/gitlab.com/sorare'
+abbr -a soi 'cd ~/sorare/infra'
+abbr -a sob 'cd ~/sorare/backend'
+abbr -a sof 'cd ~/sorare/frontend'
+abbr -a soc 'cd ~/sorare/infra/development; rvm use && bundle exec pry && cd -'
+abbr -a pbcopy 'xclip -selection clipboard'
 
 # Fish git prompt
-set -g __fish_git_prompt_show_informative_status
+set -g __fish_git_prompt_show_informative_status 1
 # set -g __fish_git_prompt_hide_untrackedfiles 1
 
 set -g __fish_git_prompt_showupstream "informative"
@@ -30,7 +38,8 @@ set -g fish_prompt_pwd_dir_length 1
 set -g fish_color_valid_path --underline
 
 set -e fish_user_paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin /usr/share/rvm/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/local/go/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/go/bin $HOME/.rvm/bin $HOME/.pyenv/bin $HOME/.rover/bin $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin $HOME/.zig $HOME/.bun/bin
+set -gx EDITOR vim
 
 # colored man output
 # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
@@ -43,11 +52,12 @@ setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/library"
-setenv RUSTC_WRAPPER sccache
 setenv KUBECONFIG $HOME/.kube/config
 setenv KUBECTX_IGNORE_FZF 1
 setenv GOPATH $HOME/go
 setenv NVM_DIR $HOME/.nvm
+setenv PYENV_ROOT $HOME/.pyenv
+setenv SSH_AUTH_SOCK /tmp/ssh-agent.sock
 
 function fish_prompt
   set last_command_status $status
@@ -74,6 +84,13 @@ function fish_right_prompt
   # echo (grep "current-context" "$KUBECONFIG" | cut -d ' ' -f 2)
 	set_color normal
 end
+
+# asdf
+source /opt/asdf-vm/asdf.fish
+
+# pyenv
+pyenv init --path | source
+pyenv init - | source
 
 if status is-interactive
 and not set -q TMUX
