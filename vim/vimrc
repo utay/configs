@@ -15,8 +15,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\'
 " always keep 5 lines visible
 set scrolloff=8
 
-" pathogen
-" execute pathogen#infect()
 filetype plugin indent on
 
 " colorscheme
@@ -49,6 +47,7 @@ set shiftwidth=2
 set tabstop=2
 
 autocmd FileType html,css,javascript,ruby,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
+autocmd FileType gdscript :setlocal noexpandtab
 
 set ai " Auto indent
 set si " Smart indent
