@@ -79,6 +79,9 @@ function! LspStatus() abort
 endfunction
 
 lua <<EOF
+-- Disable to make base16-onedark work (in vimrc)
+vim.o.termguicolors = false
+
 -- Enable syntax highlighting
 require'nvim-treesitter.configs'.setup {
   highlight = {
