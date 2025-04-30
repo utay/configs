@@ -5,13 +5,10 @@ abbr -a k kubectl
 abbr -a kx kubectx
 abbr -a ks kubens
 abbr -a ls exa
-abbr -a so 'cd ~/sorare'
 abbr -a gop 'cd ~/go'
-abbr -a gops 'cd ~/go/src/gitlab.com/sorare'
-abbr -a soi 'cd ~/sorare/infra'
-abbr -a sob 'cd ~/sorare/backend'
-abbr -a sof 'cd ~/sorare/frontend'
-abbr -a soc 'cd ~/sorare/infra/development; rvm use && bundle exec pry && cd -'
+abbr -a sob 'cd ~/altertable-ai/backend/app; rvm use'
+abbr -a soi 'cd ~/altertable-ai/backend/infra'
+abbr -a sof 'cd ~/altertable-ai/frontend'
 abbr -a pbcopy 'xclip -selection clipboard'
 
 # Fish git prompt
