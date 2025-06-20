@@ -6,10 +6,15 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.tabCompletion": "on",
+  "keyboard.dispatch": "keyCode",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["K"],
       "commands": [{ "command": "editor.action.showHover" }]
+    },
+    {
+      "before": ["1"],
+      "commands": [{ "command": "editor.action.revealDefinition" }]
     }
   ],
   // https://github.com/VSCodeVim/Vim/issues/4017
@@ -34,26 +39,26 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
   },
   "[terraform]": {
     "editor.formatOnSave": true
   },
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "100"],
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    },
-    "editor.formatOnSave": true
-  },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
   },
   "[gdscript]": {
     "editor.formatOnSave": true
@@ -61,6 +66,4 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "zig.zls.enabled": "on",
-  "zig.zls.path": "",
 }

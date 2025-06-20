@@ -39,14 +39,13 @@ bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+z exec --no-startup-id morc_menu
 
 ################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+## sound-section
 ################################################################################################
 
-exec --no-startup-id volumeicon
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -428,3 +427,5 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec_always xset r rate 240 40
 exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# Update Touchpad speed
+exec xinput --set-prop 10 "libinput Accel Speed" 0.3

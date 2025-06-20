@@ -79,6 +79,7 @@ function! LspStatus() abort
 endfunction
 
 lua <<EOF
+-- See https://www.reddit.com/r/neovim/comments/1d66jlw/color_scheme_problems_in_0100/
 -- Disable to make base16-onedark work (in vimrc)
 vim.o.termguicolors = false
 
