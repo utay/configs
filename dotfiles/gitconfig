@@ -1,18 +1,21 @@
 [alias]
-    st = status
-    ci = commit
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  st = status
+  ci = commit
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [user]
-    email = yannickutard@gmail.com
+  email = yannickutard@gmail.com
+  name = "Yannick Utard"
 
 [push]
-	default = current
+  default = current
 
 [core]
-	excludesfile = /home/utay/.gitignore
+  excludesfile = /home/utay/.gitignore
+  editor = nvim
+
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
